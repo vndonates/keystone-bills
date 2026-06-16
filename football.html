@@ -226,8 +226,19 @@
   .hero-crest{
     justify-self:center;
     width:100%;
-    max-width:280px;
+    max-width:300px;
+    height:auto;
+    display:block;
+    object-fit:contain;
     animation:float 6s ease-in-out infinite;
+    filter:drop-shadow(0 8px 28px rgba(0,0,0,0.4));
+    opacity:1 !important;
+    transform:none !important;
+  }
+
+  img.hero-crest.reveal-up{
+    animation:float 6s ease-in-out infinite, revealUp .7s ease forwards;
+    animation-delay:0s, .18s;
   }
 
   @keyframes float{
@@ -652,7 +663,7 @@
 
   /* Logo image overrides */
   .nav-brand .crest{width:48px;height:48px;flex-shrink:0;object-fit:contain;}
-  .hero-crest{justify-self:center;width:100%;max-width:300px;object-fit:contain;animation:float 6s ease-in-out infinite;display:block;}
+  .hero-crest{justify-self:center;width:100%;max-width:300px;height:auto;object-fit:contain;animation:float 6s ease-in-out infinite;display:block;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.35));}
   .keystone-frame .crest{width:110px;height:110px;object-fit:contain;margin:0 auto 18px;}
   .footer-brand .crest{width:50px;height:50px;object-fit:contain;}
 
