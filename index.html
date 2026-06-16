@@ -4,7 +4,7 @@
 <script>document.documentElement.classList.remove('no-js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keystone Bills Youth Football</title>
+<title>Keystone Bills | Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -637,35 +637,86 @@
     .footer-grid{grid-template-columns:1fr; gap:32px;}
   }
 
+
+  .nav-links a.active::after{width:100%;}
+
+  /* Home page extras */
+  .home-highlights{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+    margin-top:48px;
+  }
+  .highlight-card{
+    background:var(--white);
+    border-radius:6px;
+    padding:32px 28px;
+    box-shadow:0 10px 30px -18px rgba(27,58,107,0.35);
+    text-align:center;
+  }
+  .highlight-icon{
+    font-size:2.2rem;
+    margin-bottom:14px;
+  }
+  .highlight-card h3{
+    color:var(--keystone-blue);
+    font-size:1.2rem;
+    margin-bottom:10px;
+    text-transform:none;
+    font-family:'Work Sans',sans-serif;
+    font-weight:700;
+  }
+  .highlight-card p{color:var(--ink-soft); font-size:0.95rem;}
+
+  .league-banner{
+    background:var(--keystone-blue);
+    color:var(--white);
+    text-align:center;
+    padding:40px 24px;
+  }
+  .league-banner p{
+    font-family:'Space Mono',monospace;
+    letter-spacing:0.15em;
+    font-size:0.85rem;
+    color:var(--keystone-gold);
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .league-banner h2{
+    color:var(--white);
+    font-size:clamp(1.8rem,4vw,2.8rem);
+  }
+
+  @media(max-width:880px){
+    .home-highlights{grid-template-columns:1fr;}
+  }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
   }
+
 </style>
-</head>
-<body>
+</head><body>
 
 <!-- ============ NAV ============ -->
 <header>
   <nav class="nav">
-    <a href="#top" class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <svg class="crest" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keystone Bills logo">
         <circle cx="100" cy="100" r="96" fill="#1B3A6B" stroke="#D4A537" stroke-width="6"/>
         <circle cx="100" cy="100" r="86" fill="none" stroke="#D4A537" stroke-width="1.5" opacity="0.6"/>
         <text x="100" y="75" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="18" letter-spacing="3" fill="#D4A537">KEYSTONE</text>
         <text x="100" y="145" text-anchor="middle" font-family="Anton, sans-serif" font-size="50" letter-spacing="2" fill="#F6F3EC">BILLS</text>
       </svg>
-      <div class="nav-brand-text">Keystone Bills<span>Youth Football</span></div>
+      <div class="nav-brand-text">Keystone Bills<span>Football &amp; Cheer</span></div>
     </a>
-
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#programs">Football</a></li>
+      <li><a href="index.html" class="active">About</a></li>
+      <li><a href="football.html">Football</a></li>
       <li><a href="cheerleading.html">Cheerleading</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="faq.html">FAQ</a></li>
-      <li><a href="#join" class="btn btn-outline-dark" style="padding:10px 22px;">Register Now</a></li>
+      <li><a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-outline-dark" style="padding:10px 22px;">Register Now</a></li>
     </ul>
-
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -676,12 +727,12 @@
 <section class="hero" id="top">
   <div class="wrap hero-inner">
     <div>
-      <div class="eyebrow reveal-up d1">Youth Tackle Football &middot; Odessa, FL</div>
+      <div class="eyebrow reveal-up d1">Youth Football &amp; Cheer &middot; Odessa, FL</div>
       <h1 class="reveal-up d2">Keystone <span class="accent">Bills</span></h1>
-      <p class="reveal-up d3">Every great team needs a keystone&mdash;the piece that holds everything together. Our players learn the fundamentals of football while building the confidence, friendships, and teamwork that last well beyond the season.</p>
+      <p class="reveal-up d3">Every great team needs a keystone&mdash;the piece that holds everything together. We build confident athletes, strong friendships, and lasting memories, one season at a time.</p>
       <div class="hero-ctas reveal-up d4">
-        <a href="#join" class="btn btn-primary">Register Your Player</a>
-        <a href="#programs" class="btn btn-outline">View Programs</a>
+        <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-primary">Register Now</a>
+        <a href="football.html" class="btn btn-outline">View Programs</a>
       </div>
     </div>
     <svg class="hero-crest reveal-up d2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keystone Bills logo large">
@@ -697,7 +748,7 @@
 <div class="stats">
   <div class="wrap stats-inner">
     <div>
-      <div class="stat-num">5&ndash;14</div>
+      <div class="stat-num">3&ndash;14</div>
       <div class="stat-label">Ages Welcome</div>
     </div>
     <div>
@@ -723,9 +774,12 @@
         <span class="eyebrow">About Us</span>
         <h2>Built On Teamwork</h2>
       </div>
-      <p>The Keystone Bills are a community youth football program created by parents, for families. We believe every kid deserves a spot on the team&mdash;<strong>no experience necessary, no kid sits out the season.</strong></p>
-      <p>Our coaches focus on the fundamentals: footwork, teamwork, and good sportsmanship, all wrapped in a fun, encouraging environment. Win or lose, every player walks off the field having learned something and made new friends.</p>
-      <p>Whether your child is picking up a football for the first time or has been dreaming about game day all year, there's a place for them here.</p>
+      <p>The Keystone Bills are a community youth football and cheerleading program created by parents, for families. We believe every kid deserves a spot on the team&mdash;<strong>no experience necessary, no kid sits out the season.</strong></p>
+      <p>Our coaches are certified, background-checked volunteers who focus on the fundamentals: footwork, teamwork, and good sportsmanship, all wrapped in a fun, encouraging environment. Win or lose, every athlete walks off the field having learned something and made new friends.</p>
+      <p>Whether your child is picking up a football for the first time, learning their first cheer routine, or has been dreaming about game day all year, there's a place for them here. We are proud members of the <strong>Florida Elite Football Conference (FEFC)</strong> and compete as part of the <strong>Florida Elite League</strong>.</p>
+      <div style="margin-top:28px;">
+        <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-primary">Register Your Athlete</a>
+      </div>
     </div>
     <div class="keystone-frame">
       <svg class="crest" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keystone Bills logo">
@@ -740,95 +794,13 @@
   </div>
 </section>
 
-<!-- ============ PROGRAMS ============ -->
-<section id="programs" style="background:var(--white);">
-  <div class="wrap fade-in">
-    <div class="section-head">
-      <span class="eyebrow">Football</span>
-      <h2>Find Your Player's Level</h2>
-      <p>Every division is designed around age-appropriate skill-building, so players grow at the right pace, on and off the field.</p>
-    </div>
-    <div class="programs-grid">
-      <div class="program-card">
-        <div class="program-top"><span>Mascots</span></div>
-        <div class="program-body">
-          <h3>Ages 4&ndash;6</h3>
-          <p>Players learn the basic fundamentals of football in a safe, supportive environment while supporting their team.</p>
-          <div class="program-tags">
-            <span>Learn the Basics</span>
-            <span>No Contact</span>
-            <span class="tag-free">Free</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-top"><span>6U</span></div>
-        <div class="program-body">
-          <h3>Ages 5&ndash;6</h3>
-          <p>Players are introduced to tackle football in a safe, supportive environment focused on footwork, technique, and having fun.</p>
-          <div class="program-tags">
-            <span>Tackle Football</span>
-            <span>Fundamentals</span>
-            <span>Fun First</span>
-            <span class="tag-fee">$250 / Season</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-top"><span>8U</span></div>
-        <div class="program-body">
-          <h3>Ages 7&ndash;8</h3>
-          <p>Players build on the basics with expanded drills, introductory positions, and simple team plays.</p>
-          <div class="program-tags">
-            <span>Tackle Football</span>
-            <span>Positions</span>
-            <span>Team Plays</span>
-            <span class="tag-fee">$250 / Season</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-top"><span>10U</span></div>
-        <div class="program-body">
-          <h3>Ages 9&ndash;10</h3>
-          <p>Players take on more responsibility with position specialization and a deeper focus on strategy.</p>
-          <div class="program-tags">
-            <span>Tackle Football</span>
-            <span>Strategy</span>
-            <span>Specialization</span>
-            <span class="tag-fee">$250 / Season</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-top"><span>12U</span></div>
-        <div class="program-body">
-          <h3>Ages 11&ndash;12</h3>
-          <p>Increased intensity and more advanced playbooks help players sharpen their skills and football IQ.</p>
-          <div class="program-tags">
-            <span>Tackle Football</span>
-            <span>Advanced Schemes</span>
-            <span>Leadership</span>
-            <span class="tag-fee">$250 / Season</span>
-          </div>
-        </div>
-      </div>
-      <div class="program-card">
-        <div class="program-top"><span>14U</span></div>
-        <div class="program-body">
-          <h3>Ages 13&ndash;14</h3>
-          <p>Our most advanced division, preparing players for the next level with competitive game play and full playbooks.</p>
-          <div class="program-tags">
-            <span>Tackle Football</span>
-            <span>Competitive Play</span>
-            <span>Game Ready</span>
-            <span class="tag-fee">$250 / Season</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ============ LEAGUE BANNER ============ -->
+<div class="league-banner fade-in">
+  <div class="wrap">
+    <p>Proud Members Of</p>
+    <h2>The Florida Elite League</h2>
   </div>
-</section>
+</div>
 
 <!-- ============ WHY JOIN ============ -->
 <section class="why" id="why">
@@ -843,7 +815,7 @@
         <div class="why-icon">&#10003;</div>
         <div>
           <h3>Certified, Background-Checked Coaches</h3>
-          <p>Every coach is screened and trained to put player safety and development first.</p>
+          <p>Every coach is screened and trained to put athlete safety and development first.</p>
         </div>
       </div>
       <div class="why-item">
@@ -856,8 +828,8 @@
       <div class="why-item">
         <div class="why-icon">&#9733;</div>
         <div>
-          <h3>Every Player Gets Playing Time</h3>
-          <p>We believe development happens on the field&mdash;every player suits up and plays.</p>
+          <h3>Every Athlete Gets Playing Time</h3>
+          <p>We believe development happens on the field&mdash;every athlete suits up and participates.</p>
         </div>
       </div>
       <div class="why-item">
@@ -878,140 +850,43 @@
         <div class="why-icon">&#128178;</div>
         <div>
           <h3>Sibling &amp; Family Discounts</h3>
-          <p>Football should be accessible&mdash;ask us about discounts for multiple kids in one family.</p>
+          <p>Football and cheer should be accessible&mdash;ask us about discounts for multiple kids in one family.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ SCHEDULE ============ -->
-<section id="schedule">
-  <div class="wrap fade-in">
-    <div class="section-head">
-      <span class="eyebrow">Season Info</span>
-      <h2>Practice &amp; Game Schedule</h2>
-      <p>Here's what a typical week looks like. Specific dates will be shared with registered families before the season kicks off.</p>
-    </div>
-    <div class="schedule-grid">
-      <div class="schedule-card">
-        <h3>Weekly Practices</h3>
-        <div class="schedule-row"><span>Mondays</span><span>6:30 &ndash; 8:30 PM</span></div>
-        <div class="schedule-row"><span>Tuesdays</span><span>6:30 &ndash; 8:30 PM</span></div>
-        <div class="schedule-row"><span>Thursdays</span><span>6:30 &ndash; 8:30 PM</span></div>
-        <div class="schedule-row"><span>Location</span><span>Keystone Park &amp; Rec Center</span></div>
-        <p class="schedule-note">Practice times may vary slightly by age division. Updates will be sent to registered families.</p>
-      </div>
-      <div class="schedule-card">
-        <h3>Game Days</h3>
-        <div class="schedule-row"><span>Games</span><span>Saturdays</span></div>
-        <div class="schedule-row"><span>Season Starts</span><span>June 1, 2026</span></div>
-        <div class="schedule-row"><span>Home Field</span><span>TBD</span></div>
-        <p class="schedule-note">Full schedule with opponents and locations will be posted once the season is finalized.</p>
-      </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-primary" style="margin-right:16px;">Register Now</a>
+      <a href="faq.html" class="btn btn-outline">Read Our FAQ</a>
     </div>
   </div>
 </section>
 
-<!-- ============ JOIN / REGISTER ============ -->
-<section class="join" id="join">
+<!-- ============ HIGHLIGHTS ============ -->
+<section style="background:var(--field-cream);">
   <div class="wrap fade-in">
     <div class="section-head">
-      <span class="eyebrow">Join The Team</span>
-      <h2>Ready To Suit Up?</h2>
-      <p>Spots fill up fast each season. Here's how to get your player signed up.</p>
+      <span class="eyebrow">Our Programs</span>
+      <h2>Something For Everyone</h2>
+      <p>From your youngest toddler to your teen athlete, we have a program that fits.</p>
     </div>
-    <div class="join-grid">
-      <ol class="steps">
-        <li>
-          <div class="step-num">1</div>
-          <div>
-            <h3>Submit the interest form</h3>
-            <p>Tell us a bit about your athlete&mdash;name, age, and which program and division fits best.</p>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">2</div>
-          <div>
-            <h3>We'll follow up within 48 hours</h3>
-            <p>A member of our team will reach out with next steps, including any forms and gear info.</p>
-          </div>
-        </li>
-        <li>
-          <div class="step-num">3</div>
-          <div>
-            <h3>Come to a welcome practice</h3>
-            <p>Meet the coaches, get fitted for gear, and start having fun with the team.</p>
-          </div>
-        </li>
-      </ol>
-
-      <div class="form-card">
-        <h3>Athlete Interest Form</h3>
-        <!--
-          NOTE: This form uses Formspree's email-based setup. The FIRST
-          submission will trigger a confirmation email to
-          keystonebillspresident@gmail.com — that email must be confirmed
-          (click the link inside it) before submissions start arriving normally.
-          After that, every form submission is emailed to that address automatically.
-        -->
-        <form action="https://formspree.io/f/keystonebillspresident@gmail.com" method="POST">
-          <div class="form-row">
-            <div>
-              <label for="parentName">Parent / Guardian Name</label>
-              <input type="text" id="parentName" name="parentName" required>
-            </div>
-            <div>
-              <label for="parentEmail">Email</label>
-              <input type="email" id="parentEmail" name="parentEmail" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div>
-              <label for="parentPhone">Phone Number</label>
-              <input type="tel" id="parentPhone" name="parentPhone" required>
-            </div>
-            <div>
-              <label for="playerAge">Athlete Age</label>
-              <input type="number" id="playerAge" name="playerAge" min="3" max="14" required>
-            </div>
-          </div>
-          <div class="form-row full">
-            <div>
-              <label for="programType">Interested Program</label>
-              <select id="programType" name="programType">
-                <option>Tackle Football</option>
-                <option>Cheerleading</option>
-                <option>Not Sure Yet</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row full">
-            <div>
-              <label for="division">Interested Division</label>
-              <select id="division" name="division">
-                <optgroup label="Football">
-                  <option>Mascots (Ages 4&ndash;6)</option>
-                  <option>6U (Ages 5&ndash;6)</option>
-                  <option>8U (Ages 7&ndash;8)</option>
-                  <option>10U (Ages 9&ndash;10)</option>
-                  <option>12U (Ages 11&ndash;12)</option>
-                  <option>14U (Ages 13&ndash;14)</option>
-                </optgroup>
-                <optgroup label="Cheerleading">
-                  <option>Little Legends (Ages 3&ndash;5)</option>
-                  <option>Tiny Thunder (Ages 6&ndash;7)</option>
-                  <option>Sparkling Hurricanes (Ages 8&ndash;9)</option>
-                  <option>Dynamite Divas (Ages 10&ndash;11)</option>
-                  <option>Fierce Heat (Ages 12&ndash;14)</option>
-                </optgroup>
-                <option>Not Sure Yet</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit Interest Form</button>
-          <p class="form-fineprint">We'll never share your information. You'll hear back from a real person on our team.</p>
-        </form>
+    <div class="home-highlights">
+      <div class="highlight-card">
+        <div class="highlight-icon">🏈</div>
+        <h3>Tackle Football</h3>
+        <p>Six divisions from 6U through 14U, all tackle football. Age-appropriate coaching, custom uniforms, and 10 regular season games.</p>
+        <div style="margin-top:18px;"><a href="football.html" class="btn btn-outline-dark" style="padding:10px 22px; font-size:0.8rem;">View Football</a></div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📣</div>
+        <h3>Cheerleading</h3>
+        <p>Five squads from Little Legends (ages 3–5) through Fierce Heat (ages 12–14). Game day sideline cheer plus 4+ competitions per season.</p>
+        <div style="margin-top:18px;"><a href="cheerleading.html" class="btn btn-outline-dark" style="padding:10px 22px; font-size:0.8rem;">View Cheer</a></div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">📸</div>
+        <h3>Team Gallery</h3>
+        <p>From the field to the nationals stage&mdash;see our athletes in action and the moments that make this program special.</p>
+        <div style="margin-top:18px;"><a href="gallery.html" class="btn btn-outline-dark" style="padding:10px 22px; font-size:0.8rem;">View Gallery</a></div>
       </div>
     </div>
   </div>
@@ -1031,33 +906,28 @@
           </svg>
           <div class="footer-brand-text">Keystone Bills</div>
         </div>
-        <p>A community youth football program built on teamwork, fundamentals, and fun. New players always welcome. Proud members of the Florida Elite League.</p>
+        <p>A community youth football and cheerleading program built on teamwork, fundamentals, and fun. New athletes always welcome. Proud members of the Florida Elite League.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/profile.php?id=61559928530484" aria-label="Facebook" target="_blank" rel="noopener">f</a>
           <a href="https://www.instagram.com/keystonebills_football/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
         </div>
       </div>
-
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="mailto:keystonebillspresident@gmail.com">keystonebillspresident@gmail.com</a>
         <a href="tel:+18134750071">813-475-0071</a>
         <p>Odessa, FL</p>
       </div>
-
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <a href="#about">About</a>
-        <a href="#programs">Football</a>
+        <a href="index.html">About</a>
+        <a href="football.html">Football</a>
         <a href="cheerleading.html">Cheerleading</a>
         <a href="gallery.html">Gallery</a>
         <a href="faq.html">FAQ</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#why">Why Join</a>
-        <a href="#join">Register</a>
+        <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener">Register</a>
       </div>
     </div>
-
     <div class="footer-bottom">
       &copy; <span id="year"></span> Keystone Bills Youth Football. All rights reserved.
     </div>
@@ -1065,7 +935,6 @@
 </footer>
 
 <script>
-  // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => {
@@ -1073,8 +942,6 @@
     navToggle.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen);
   });
-
-  // Close mobile nav after clicking a link
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
@@ -1082,22 +949,14 @@
       navToggle.setAttribute('aria-expanded', false);
     });
   });
-
-  // Scroll reveal
   const revealEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => observer.observe(el));
-
-  // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>

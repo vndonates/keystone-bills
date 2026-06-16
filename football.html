@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<script>document.documentElement.classList.remove('no-js');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keystone Bills Football</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --keystone-blue:#1B3A6B;
+    --keystone-blue-dark:#122A4F;
+    --bills-red:#C8313D;
+    --keystone-gold:#D4A537;
+    --field-cream:#F6F3EC;
+    --ink:#1F2430;
+    --ink-soft:#5A6072;
+    --white:#FFFFFF;
+    --max-w:1140px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Work Sans',sans-serif;
+    color:var(--ink);
+    background:var(--field-cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    line-height:1.05;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-size:0.78rem;
+    font-weight:700;
+  }
+
+  .wrap{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  a{color:inherit;}
+
+  img,svg{display:block;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 30px;
+    border-radius:4px;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:3px solid var(--keystone-gold); outline-offset:2px;}
+
+  .btn-primary{
+    background:var(--bills-red);
+    color:var(--white);
+    box-shadow:0 6px 0 var(--keystone-blue-dark);
+  }
+  .btn-primary:hover{box-shadow:0 8px 0 var(--keystone-blue-dark);}
+
+  .btn-outline{
+    background:transparent;
+    border-color:var(--white);
+    color:var(--white);
+  }
+  .btn-outline:hover{background:var(--white); color:var(--keystone-blue);}
+
+  .btn-outline-dark{
+    background:transparent;
+    border-color:var(--keystone-blue);
+    color:var(--keystone-blue);
+  }
+  .btn-outline-dark:hover{background:var(--keystone-blue); color:var(--white);}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:var(--field-cream);
+    border-bottom:3px solid var(--keystone-blue);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:var(--max-w);
+    margin:0 auto;
+  }
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .nav-brand .crest{width:42px;height:42px;flex-shrink:0;}
+  .nav-brand-text{
+    font-family:'Anton',sans-serif;
+    font-size:1.25rem;
+    letter-spacing:0.06em;
+    line-height:1;
+    text-transform:uppercase;
+    color:var(--keystone-blue);
+  }
+  .nav-brand-text span{display:block; color:var(--bills-red); font-size:0.7rem; font-family:'Space Mono',monospace; letter-spacing:0.2em; margin-top:3px;}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--ink);
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:3px;
+    background:var(--bills-red);
+    transition:width .2s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  .nav-cta{display:none;}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:2px solid var(--keystone-blue);
+    border-radius:4px;
+    width:42px;height:42px;
+    cursor:pointer;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+  }
+  .nav-toggle span{
+    display:block;width:22px;height:3px;background:var(--keystone-blue);
+    transition:transform .2s ease, opacity .2s ease;
+  }
+  .nav-toggle.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:var(--keystone-blue);
+    color:var(--white);
+    padding:84px 0 96px;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 26px,
+      transparent 26px,
+      transparent 64px
+    );
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero .eyebrow{color:var(--keystone-gold); margin-bottom:18px;}
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 5.6rem);
+    color:var(--white);
+    margin-bottom:18px;
+  }
+  .hero h1 .accent{color:var(--bills-red);}
+  .hero p{
+    font-size:1.15rem;
+    max-width:480px;
+    color:rgba(255,255,255,0.88);
+    margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+
+  .hero-crest{
+    justify-self:center;
+    width:100%;
+    max-width:280px;
+    animation:float 6s ease-in-out infinite;
+  }
+
+  @keyframes float{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-14px);}
+  }
+
+  /* reveal-on-load for hero text */
+  .reveal-up{
+    opacity:0;
+    transform:translateY(24px);
+    animation:revealUp .7s ease forwards;
+  }
+  .reveal-up.d1{animation-delay:.05s;}
+  .reveal-up.d2{animation-delay:.18s;}
+  .reveal-up.d3{animation-delay:.3s;}
+  .reveal-up.d4{animation-delay:.42s;}
+  @keyframes revealUp{
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- Stats bar ---------- */
+  .stats{
+    background:var(--keystone-gold);
+    color:var(--keystone-blue-dark);
+  }
+  .stats-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    text-align:center;
+    padding:28px 0;
+  }
+  .stats-inner div + div{border-left:2px solid rgba(27,58,107,0.18);}
+  .stat-num{
+    font-family:'Anton',sans-serif;
+    font-size:2.1rem;
+    letter-spacing:0.04em;
+  }
+  .stat-label{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+
+  /* ---------- Section generic ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head .eyebrow{color:var(--bills-red); margin-bottom:10px; display:block;}
+  .section-head h2{
+    font-size:clamp(2.2rem, 5vw, 3.2rem);
+    color:var(--keystone-blue);
+  }
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:1.05rem;}
+
+  /* ---------- About ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-copy p{margin-bottom:16px; color:var(--ink-soft); font-size:1.05rem;}
+  .about-copy p strong{color:var(--ink);}
+
+  .keystone-frame{
+    background:var(--white);
+    border:3px solid var(--keystone-blue);
+    clip-path:polygon(14% 0%, 86% 0%, 100% 100%, 0% 100%);
+    padding:52px 30px 40px;
+    text-align:center;
+  }
+  .keystone-frame .crest{width:96px; margin:0 auto 18px;}
+  .keystone-frame h3{color:var(--keystone-blue); font-size:1.4rem; margin-bottom:10px;}
+  .keystone-frame p{color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ---------- Programs ---------- */
+  .programs-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  @media(max-width:880px){
+    .programs-grid{grid-template-columns:1fr;}
+  }
+  .program-card{
+    background:var(--white);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 10px 30px -18px rgba(27,58,107,0.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .program-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 36px -16px rgba(27,58,107,0.45);
+  }
+  .program-top{
+    height:90px;
+    clip-path:polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .program-card:nth-child(1) .program-top{background:var(--keystone-blue);}
+  .program-card:nth-child(2) .program-top{background:var(--bills-red);}
+  .program-card:nth-child(3) .program-top{background:var(--keystone-gold);}
+  .program-card:nth-child(4) .program-top{background:var(--keystone-blue);}
+  .program-card:nth-child(5) .program-top{background:var(--bills-red);}
+  .program-card:nth-child(6) .program-top{background:var(--keystone-gold);}
+  .program-top span{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    color:var(--white);
+    font-size:1rem;
+    letter-spacing:0.1em;
+  }
+  .program-card:nth-child(3) .program-top span{color:var(--keystone-blue-dark);}
+  .program-card:nth-child(6) .program-top span{color:var(--keystone-blue-dark);}
+  .program-body{padding:28px 26px 32px;}
+  .program-body h3{color:var(--keystone-blue); font-size:1.5rem; margin-bottom:10px;}
+  .program-body p{color:var(--ink-soft); font-size:0.95rem; margin-bottom:14px;}
+  .program-tags{display:flex; gap:8px; flex-wrap:wrap;}
+  .program-tags span{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:var(--field-cream);
+    border:1px solid rgba(27,58,107,0.18);
+    color:var(--keystone-blue);
+    padding:5px 10px;
+    border-radius:3px;
+  }
+  .program-tags span.tag-free{
+    background:var(--keystone-gold);
+    border-color:var(--keystone-gold);
+    color:var(--keystone-blue-dark);
+    font-weight:700;
+  }
+  .program-tags span.tag-fee{
+    background:var(--keystone-blue);
+    border-color:var(--keystone-blue);
+    color:var(--white);
+    font-weight:700;
+  }
+
+  /* ---------- Why join ---------- */
+  .why{background:var(--keystone-blue); color:var(--white);}
+  .why .section-head h2{color:var(--white);}
+  .why .section-head p{color:rgba(255,255,255,0.75);}
+  .why .section-head .eyebrow{color:var(--keystone-gold);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .why-item{display:flex; gap:16px; align-items:flex-start;}
+  .why-icon{
+    flex-shrink:0;
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--keystone-gold);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--keystone-blue-dark);
+    font-family:'Anton',sans-serif;
+    font-size:1.2rem;
+  }
+  .why-item h3{
+    font-family:'Work Sans',sans-serif;
+    text-transform:none;
+    font-weight:700;
+    font-size:1.05rem;
+    margin-bottom:6px;
+  }
+  .why-item p{color:rgba(255,255,255,0.75); font-size:0.92rem;}
+
+  /* ---------- Schedule ---------- */
+  .schedule-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .schedule-card{
+    background:var(--white);
+    border-left:6px solid var(--bills-red);
+    padding:30px 28px;
+    border-radius:4px;
+    box-shadow:0 10px 30px -20px rgba(27,58,107,0.35);
+  }
+  .schedule-card:nth-child(2){border-left-color:var(--keystone-blue);}
+  .schedule-card h3{
+    color:var(--keystone-blue);
+    font-size:1.2rem;
+    margin-bottom:14px;
+  }
+  .schedule-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid rgba(27,58,107,0.1);
+    font-size:0.95rem;
+  }
+  .schedule-row:last-child{border-bottom:none;}
+  .schedule-row span:first-child{color:var(--ink-soft);}
+  .schedule-row span:last-child{font-family:'Space Mono',monospace; font-weight:700; color:var(--ink);}
+  .schedule-note{
+    margin-top:18px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+
+  /* ---------- Join / register ---------- */
+  .join{background:var(--bills-red); color:var(--white);}
+  .join .section-head h2{color:var(--white);}
+  .join .section-head p{color:rgba(255,255,255,0.85);}
+  .join .section-head .eyebrow{color:var(--keystone-gold);}
+
+  .join-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:48px;
+    align-items:flex-start;
+  }
+  .steps{list-style:none;}
+  .steps li{
+    display:flex;
+    gap:18px;
+    margin-bottom:26px;
+  }
+  .step-num{
+    font-family:'Anton',sans-serif;
+    font-size:1.6rem;
+    width:48px;height:48px;
+    border-radius:50%;
+    border:2px solid var(--white);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .steps h3{
+    font-family:'Work Sans',sans-serif;
+    text-transform:none;
+    font-weight:700;
+    font-size:1.05rem;
+    margin-bottom:4px;
+  }
+  .steps p{color:rgba(255,255,255,0.85); font-size:0.92rem;}
+
+  .form-card{
+    background:var(--white);
+    color:var(--ink);
+    border-radius:6px;
+    padding:36px;
+    box-shadow:0 20px 50px -25px rgba(0,0,0,0.4);
+  }
+  .form-card h3{
+    color:var(--keystone-blue);
+    font-size:1.3rem;
+    margin-bottom:20px;
+    text-transform:uppercase;
+    font-family:'Anton',sans-serif;
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+  .form-row.full{grid-template-columns:1fr;}
+  label{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  input,select{
+    width:100%;
+    padding:12px 14px;
+    border:2px solid #E2DED3;
+    border-radius:4px;
+    font-family:'Work Sans',sans-serif;
+    font-size:0.95rem;
+    background:var(--field-cream);
+    color:var(--ink);
+  }
+  input:focus,select:focus{
+    outline:none;
+    border-color:var(--keystone-blue);
+  }
+  .form-card .btn-primary{
+    width:100%;
+    margin-top:8px;
+    box-shadow:0 6px 0 var(--keystone-gold);
+  }
+  .form-card .btn-primary:hover{box-shadow:0 8px 0 var(--keystone-gold);}
+  .form-fineprint{
+    margin-top:14px;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--keystone-blue-dark);
+    color:rgba(255,255,255,0.8);
+    padding:56px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:40px;
+  }
+  .footer-brand{display:flex; gap:12px; align-items:flex-start; margin-bottom:14px;}
+  .footer-brand .crest{width:40px;}
+  .footer-brand-text{font-family:'Anton',sans-serif; color:var(--white); font-size:1.15rem; letter-spacing:0.06em;}
+  .footer-col h4{
+    font-family:'Space Mono',monospace;
+    color:var(--keystone-gold);
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .footer-col p, .footer-col a{
+    display:block;
+    font-size:0.9rem;
+    color:rgba(255,255,255,0.75);
+    text-decoration:none;
+    margin-bottom:8px;
+  }
+  .footer-col a:hover{color:var(--keystone-gold);}
+  .footer-social{display:flex; gap:12px; margin-top:10px;}
+  .footer-social a{
+    width:38px;height:38px;
+    border:2px solid rgba(255,255,255,0.25);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;
+    font-size:0.8rem;
+    margin-bottom:0;
+  }
+  .footer-social a:hover{border-color:var(--keystone-gold); color:var(--keystone-gold);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:24px;
+    font-size:0.8rem;
+    text-align:center;
+    color:rgba(255,255,255,0.5);
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .fade-in{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .fade-in.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .no-js .fade-in{
+    opacity:1;
+    transform:none;
+  }
+  .no-js .reveal-up{
+    opacity:1;
+    animation:none;
+    transform:none;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    .nav-links{
+      position:absolute;
+      top:100%;
+      left:0; right:0;
+      background:var(--field-cream);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:18px 24px 26px;
+      border-bottom:3px solid var(--keystone-blue);
+      gap:16px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:flex;}
+
+    .hero-inner{grid-template-columns:1fr; text-align:left;}
+    .hero-crest{max-width:180px; justify-self:start;}
+
+    .stats-inner{grid-template-columns:repeat(2,1fr); row-gap:24px;}
+    .stats-inner div:nth-child(2){border-left:2px solid rgba(27,58,107,0.18);}
+    .stats-inner div:nth-child(3){border-left:none;}
+    .stats-inner div:nth-child(odd){border-left:none;}
+    .stats-inner div:nth-child(2n){border-left:2px solid rgba(27,58,107,0.18);}
+
+    .about{grid-template-columns:1fr; gap:40px;}
+    .keystone-frame{order:-1; max-width:320px; margin:0 auto;}
+
+    .programs-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr; gap:28px;}
+    .schedule-grid{grid-template-columns:1fr;}
+    .join-grid{grid-template-columns:1fr; gap:36px;}
+    .form-row{grid-template-columns:1fr;}
+
+    .footer-grid{grid-template-columns:1fr; gap:32px;}
+  }
+
+
+  .nav-links a.active::after{width:100%;}
+  .program-card:nth-child(6) .program-top{background:var(--keystone-gold);}
+  .program-card:nth-child(6) .program-top span{color:var(--keystone-blue-dark);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+</style>
+</head><body>
+
+<!-- ============ NAV ============ -->
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <svg class="crest" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keystone Bills logo">
+        <circle cx="100" cy="100" r="96" fill="#1B3A6B" stroke="#D4A537" stroke-width="6"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#D4A537" stroke-width="1.5" opacity="0.6"/>
+        <text x="100" y="75" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="18" letter-spacing="3" fill="#D4A537">KEYSTONE</text>
+        <text x="100" y="145" text-anchor="middle" font-family="Anton, sans-serif" font-size="50" letter-spacing="2" fill="#F6F3EC">BILLS</text>
+      </svg>
+      <div class="nav-brand-text">Keystone Bills<span>Football &amp; Cheer</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">About</a></li>
+      <li><a href="football.html" class="active">Football</a></li>
+      <li><a href="cheerleading.html">Cheerleading</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-outline-dark" style="padding:10px 22px;">Register Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow reveal-up d1">Tackle Football &middot; Odessa, FL</div>
+      <h1 class="reveal-up d2">Keystone Bills <span class="accent">Football</span></h1>
+      <p class="reveal-up d3">Six age divisions from 6U through 14U, all tackle football. No experience necessary&mdash;just a willingness to learn, compete, and have fun.</p>
+      <div class="hero-ctas reveal-up d4">
+        <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-primary">Register Your Player</a>
+        <a href="#divisions" class="btn btn-outline">View Divisions</a>
+      </div>
+    </div>
+    <svg class="hero-crest reveal-up d2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keystone Bills logo large">
+      <circle cx="100" cy="100" r="96" fill="#0F2547" stroke="#D4A537" stroke-width="8"/>
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#D4A537" stroke-width="1.5" opacity="0.6"/>
+      <text x="100" y="75" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="18" letter-spacing="3" fill="#D4A537">KEYSTONE</text>
+      <text x="100" y="145" text-anchor="middle" font-family="Anton, sans-serif" font-size="50" letter-spacing="2" fill="#F6F3EC">BILLS</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ FOOTBALL DIVISIONS ============ -->
+<section id="divisions" style="background:var(--white);">
+  <div class="wrap fade-in">
+    <div class="section-head">
+      <span class="eyebrow">Tackle Football</span>
+      <h2>Find Your Player's Level</h2>
+      <p>Every division is designed around age-appropriate skill-building, so players grow at the right pace, on and off the field.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-top"><span>Mascots</span></div>
+        <div class="program-body">
+          <h3>Ages 4&ndash;6</h3>
+          <p>Players learn the basic fundamentals of football in a safe, supportive environment while supporting their team.</p>
+          <div class="program-tags">
+            <span>Learn the Basics</span>
+            <span>No Contact</span>
+            <span class="tag-free">Free</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-top"><span>6U</span></div>
+        <div class="program-body">
+          <h3>Ages 5&ndash;6</h3>
+          <p>Players are introduced to tackle football in a safe, supportive environment focused on footwork, technique, and having fun.</p>
+          <div class="program-tags">
+            <span>Tackle Football</span>
+            <span>Fundamentals</span>
+            <span class="tag-fee">$250 / Season</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-top"><span>8U</span></div>
+        <div class="program-body">
+          <h3>Ages 7&ndash;8</h3>
+          <p>Players build on the basics with expanded drills, introductory positions, and simple team plays.</p>
+          <div class="program-tags">
+            <span>Tackle Football</span>
+            <span>Positions</span>
+            <span class="tag-fee">$250 / Season</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-top"><span>10U</span></div>
+        <div class="program-body">
+          <h3>Ages 9&ndash;10</h3>
+          <p>Players take on more responsibility with position specialization and a deeper focus on strategy.</p>
+          <div class="program-tags">
+            <span>Tackle Football</span>
+            <span>Strategy</span>
+            <span class="tag-fee">$250 / Season</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-top"><span>12U</span></div>
+        <div class="program-body">
+          <h3>Ages 11&ndash;12</h3>
+          <p>Increased intensity and more advanced playbooks help players sharpen their skills and football IQ.</p>
+          <div class="program-tags">
+            <span>Tackle Football</span>
+            <span>Advanced Schemes</span>
+            <span class="tag-fee">$250 / Season</span>
+          </div>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="program-top"><span>14U</span></div>
+        <div class="program-body">
+          <h3>Ages 13&ndash;14</h3>
+          <p>Our most advanced division, preparing players for the next level with competitive game play and full playbooks.</p>
+          <div class="program-tags">
+            <span>Tackle Football</span>
+            <span>Competitive Play</span>
+            <span class="tag-fee">$250 / Season</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY FOOTBALL ============ -->
+<section class="why" id="why-football">
+  <div class="wrap fade-in">
+    <div class="section-head">
+      <span class="eyebrow">Why Play</span>
+      <h2>More Than a Game</h2>
+      <p>Here's what makes Keystone Bills football a great fit for your player.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">&#10003;</div>
+        <div>
+          <h3>Certified, Background-Checked Coaches</h3>
+          <p>Every coach is screened and trained to put player safety and development first.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">&#9917;</div>
+        <div>
+          <h3>Full Gear Package Included</h3>
+          <p>Your $250 fee covers 2 custom uniforms, a warm-up outfit, custom duffel bag, and helmet &amp; pad rental.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">&#9733;</div>
+        <div>
+          <h3>Every Player Gets Playing Time</h3>
+          <p>We believe development happens on the field&mdash;every player suits up and plays, every game.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">&#128101;</div>
+        <div>
+          <h3>A Real Community</h3>
+          <p>Spirit days, team cookouts, and sideline friendships make this as much a family as a team.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">&#128218;</div>
+        <div>
+          <h3>Fundamentals-First Coaching</h3>
+          <p>We focus on technique and safety before competition, building a strong foundation for years to come.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">&#128178;</div>
+        <div>
+          <h3>Sibling &amp; Family Discounts</h3>
+          <p>Football should be accessible&mdash;ask us about discounts for multiple kids in one family.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener" class="btn btn-primary">Register Your Player</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg class="crest" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Keystone Bills logo">
+            <circle cx="100" cy="100" r="96" fill="#D4A537" stroke="#F6F3EC" stroke-width="6"/>
+            <circle cx="100" cy="100" r="86" fill="none" stroke="#122A4F" stroke-width="1.5" opacity="0.5"/>
+            <text x="100" y="75" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="18" letter-spacing="3" fill="#122A4F">KEYSTONE</text>
+            <text x="100" y="145" text-anchor="middle" font-family="Anton, sans-serif" font-size="50" letter-spacing="2" fill="#122A4F">BILLS</text>
+          </svg>
+          <div class="footer-brand-text">Keystone Bills</div>
+        </div>
+        <p>A community youth football and cheerleading program built on teamwork, fundamentals, and fun. New athletes always welcome. Proud members of the Florida Elite League.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61559928530484" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+          <a href="https://www.instagram.com/keystonebills_football/" aria-label="Instagram" target="_blank" rel="noopener">ig</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:keystonebillspresident@gmail.com">keystonebillspresident@gmail.com</a>
+        <a href="tel:+18134750071">813-475-0071</a>
+        <p>Odessa, FL</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">About</a>
+        <a href="football.html">Football</a>
+        <a href="cheerleading.html">Cheerleading</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="faq.html">FAQ</a>
+        <a href="https://fefc.league-magic.com/main_player_registration.asp?cid=KSB" target="_blank" rel="noopener">Register</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> Keystone Bills Youth Football. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
+  const revealEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
